@@ -10,6 +10,7 @@ public class PipeMove : MonoBehaviour
     private void Update()
     {
         LeftMove();
+        PipeDestroy();
     }
 
     private void LeftMove()
@@ -18,9 +19,9 @@ public class PipeMove : MonoBehaviour
         gameObject.transform.position += _leftMoveVector * (moveSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void PipeDestroy()
     {
-        if (other.gameObject.tag == "Finish")
+        if (gameObject.transform.position.x < -7)
         {
             Destroy(gameObject);
         }
